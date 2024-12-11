@@ -3,7 +3,7 @@ import NewsItem from './NewsItem'
 
 const NewsBoard = ({category}) => {
 
-    const [articles,setArticles] =useState([])
+    const [articles,setArticles] =useState([]);
 
     useEffect(()=>{
        const fetchData=async()=>{
@@ -20,11 +20,11 @@ const NewsBoard = ({category}) => {
   return (
     <div>
         <h1 className='text-center'>Latest <span class="badge text-bg-danger ">News</span></h1>
-        {articles.map((news,index)=>{
+        {articles?(articles.map((news,index)=>{
             return(
               <NewsItem key={index} title={news.title} description={news.description} src={news.urlToImage} url={news.url} />
             )
-        })}
+        })):(<h1>Loading...</h1>)}
     </div>
   )
 }
